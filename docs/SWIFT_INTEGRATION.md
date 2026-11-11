@@ -1,4 +1,6 @@
-# How to connect from Swift
+# How to connect from iOS and Android
+
+The API is the same for both. Examples below are Swift; on Android use OkHttp / Retrofit with the same request.
 
 ## What this does
 You send a document to the server. The server sends back a PDF.
@@ -8,6 +10,8 @@ You send a document to the server. The server sends back a PDF.
 - Body: `multipart/form-data` with one field named **`file`**
 - Header: `X-API-Key: <key>` (only if the server has an API key set)
 - Success: status **200**, body is the PDF bytes
+- Header `X-Converted-By` in the response: `cloudconvert` or `libreoffice` (for debugging, the app can ignore it)
+- The server tries CloudConvert first and LibreOffice second. The app does not choose.
 
 ## Steps
 1. Get the file URL (e.g. from `.fileImporter`).
@@ -41,7 +45,7 @@ Errors come as JSON: `{"error": "message"}`.
 - Run the server: `npm start` in the converter folder. Needs LibreOffice installed.
 
 ## Rules
-- Set `timeoutInterval` to ~120 seconds. Conversion can take 5–30 seconds.
+- Set the request timeout to ~120 seconds. Normal: 5–30 seconds. Worst case (CloudConvert fails, then LibreOffice): up to ~110 seconds.
 - Show a loading spinner.
 - Do not hardcode the API key in committed code.
 - Check the extension on the phone before uploading. Saves a round trip.

@@ -17,10 +17,14 @@
 ## ✨ What it does
 
 ```
- iPhone app ──(.docx, .xls, .ppt …)──▶  server  ──▶  LibreOffice  ──▶  📕 PDF  ──▶ iPhone app
+ iOS / Android app ──(file)──▶ server ──▶ ☁️ CloudConvert ──▶ 📕 PDF ──▶ app
+                                  │             ✖ fails / no key / timeout
+                                  └──▶ 🖥 our LibreOffice ──▶ 📕 PDF ──▶ app
 ```
 
-Files are checked, converted, and **deleted right after**. No database, no accounts.
+The response header `X-Converted-By` says which engine did the job: `cloudconvert` or `libreoffice`.
+
+Files are checked, converted, and **deleted right after** (also at CloudConvert). No database, no accounts.
 
 ## 📚 Supported formats
 
@@ -90,7 +94,7 @@ If `API_KEY` is set, send it as the `X-API-Key` header.
 | `413` | File too large |
 | `415` | Unsupported type, or content doesn't match the extension |
 | `422` | Conversion failed (broken or password-protected file) |
-| `503` | Server busy, retry in a few seconds |
+| `503` | Server busy (LibreOffice full), retry in a few seconds |
 | `504` | Conversion timed out |
 
 Errors are JSON: `{"error": "message"}`
@@ -105,13 +109,16 @@ Errors are JSON: `{"error": "message"}`
 | `MAX_CONCURRENT` | `2` | Conversions at the same time |
 | `CONVERT_TIMEOUT_MS` | `60000` | Kill a conversion after this time |
 | `SOFFICE_PATH` | `soffice` | Path to the LibreOffice binary |
+| `CLOUDCONVERT_API_KEY` | – | Turns on CloudConvert as the first engine. Without it, only LibreOffice is used |
+| `CLOUDCONVERT_SANDBOX` | `false` | `true` = use CloudConvert sandbox (free testing) |
+| `CLOUDCONVERT_TIMEOUT_MS` | `45000` | Give up on CloudConvert after this time, then fall back |
 
 ## 🧪 Tests
 
 ```bash
 npm test
 ```
-10 tests. The real-conversion test is skipped if `soffice` is not installed.
+13 tests (CloudConvert is tested against a fake local server, no real key needed). The real-conversion tests is skipped if `soffice` is not installed.
 
 ## 🗂 Project structure
 
@@ -119,7 +126,8 @@ npm test
 src/
   server.js     starts the server
   app.js        routes
-  convert.js    runs LibreOffice (timeout, locked-down profile)
+  convert.js    picks the engine: CloudConvert, then LibreOffice (timeout, locked-down profile)
+  cloudconvert.js  CloudConvert API client
   validate.js   checks file content matches its extension
 test/           node:test suite
 scripts/        to-desktop.sh helper

@@ -5,10 +5,11 @@
 ## What actually happens with user data
 1. User picks a document in the app.
 2. The app uploads it to our server over HTTPS.
-3. The server converts it and sends the PDF back.
-4. The server deletes the uploaded file and the PDF copy right after the conversion (also after errors).
+3. The server sends it to **CloudConvert** (a third-party service) to convert it. If that fails, our own server converts it.
+4. The PDF comes back to the app.
+5. Our server deletes its copies right after (also after errors). We ask CloudConvert to delete the job right away; CloudConvert's own retention rules apply if that request fails.
 
-The server does **not** save file contents, read them or log them. It has no database and no user accounts.
+Our server does **not** save file contents, read them or log them. It has no database and no user accounts.
 
 **Still check:** your hosting provider (Fly.io, Cloud Run, etc.) may keep request logs (IP address, time, file size, status code). Read their docs and write the real answer in the policy.
 
@@ -21,7 +22,7 @@ The server does **not** save file contents, read them or log them. It has no dat
 3. **Where it goes:** sent to our server (and our hosting provider: name them) over an encrypted connection.
 4. **How long we keep it:** the document is deleted right after conversion. Logs (without file content) are kept for [X days: check hosting settings].
 5. **We do not:** read your documents, sell them, use them for ads or use them to train AI.
-6. **Third parties:** hosting provider [name]. No other service gets your files.
+6. **Third parties:** hosting provider [name] and **CloudConvert** (CloudConvert Pty Ltd, converts your file; link to their privacy policy). No other service gets your files.
 7. **Your rights:** (GDPR / CCPA) ask what we hold, ask us to delete it, contact: [email].
 8. **Children:** [your app's age rule].
 9. **Changes:** how you will tell users about policy updates.
@@ -34,6 +35,7 @@ Tip: the user chooses to send the file. Say clearly in the app, before the first
 - Used for: **App Functionality** only.
 - Linked to the user's identity: **No**, if you add no accounts or IDs to the request.
 - Used for tracking: **No**.
+- CloudConvert receives the document too: it is a processor of that data. Declare it as shared with a third party service for app functionality.
 - If the server logs IP addresses, also declare that data (identifiers / diagnostics), as your hosting logs it.
 
 ---
@@ -56,6 +58,7 @@ Tip: the user chooses to send the file. Say clearly in the app, before the first
 
 ## Before you publish
 - [ ] Fill in every [bracket].
+- [ ] Read CloudConvert's privacy / data-processing terms (retention, region, GDPR DPA) and sign their DPA if you have EU users.
 - [ ] Confirm the log retention of your hosting provider.
 - [ ] Put the policy URL in App Store Connect and inside the app.
 - [ ] Add the one-line notice before the first upload.

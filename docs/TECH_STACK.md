@@ -10,25 +10,27 @@ Backend service for the Air Printer "Convertation" feature. Takes a document, re
 | Node.js | Runs the server | 26.10.0 (local) / 20 (Docker image `node:20-bookworm-slim`) | Needs 20 or newer |
 | Express | Web framework (routes, responses) | 4.22.3 (`^4.21.0`) | Simple HTTP API |
 | Multer | Receives file uploads | 2.5.0 (`^2.5.0`) | Handles `multipart/form-data` |
-| LibreOffice (`soffice`, headless) | **Does the real conversion** to PDF | 26.8.2.2 (local Mac) / Debian package in Docker | Reads .doc/.docx/.xls/.ppt etc. |
+| CloudConvert | **First choice.** Online conversion API (v2) | API v2, called with built-in `fetch` | Better quality for hard files, no load on our server |
+| LibreOffice (`soffice`, headless) | **Fallback.** Converts when CloudConvert fails or is off | 26.8.2.2 (local Mac) / Debian package in Docker | Reads .doc/.docx/.xls/.ppt etc. |
 | Docker | Packaging and deployment | Base: Debian 12 (bookworm) | Same setup everywhere |
 
 Node built-ins only (no extra packages): `node:test` (tests), `node:child_process` (starts LibreOffice), `node:crypto` (API key check).
 
 ## Dependencies
-Only 2 runtime packages: `express`, `multer`. No dev dependencies. No database. No cloud services.
+Only 2 runtime packages: `express`, `multer`. No dev dependencies. No database. One cloud service: CloudConvert (needs an account + `CLOUDCONVERT_API_KEY`; pay per conversion).
 
 ## Project files
 - `src/server.js` — starts the server
 - `src/app.js` — routes (`/convert`, `/formats`, `/health`)
-- `src/convert.js` — runs LibreOffice, timeout, locked-down profile
+- `src/convert.js` — chooses engine, runs LibreOffice, timeout, locked-down profile
+- `src/cloudconvert.js` — CloudConvert client
 - `src/validate.js` — checks file content matches its extension
-- `test/` — 10 tests (`npm test`)
+- `test/` — 13 tests (`npm test`)
 - `scripts/to-desktop.sh` — converts a file and saves the PDF to Desktop
 - `Dockerfile` — image with LibreOffice and fonts
 
 ## Config (environment variables)
-`PORT` (3000), `API_KEY`, `MAX_FILE_MB` (25), `MAX_CONCURRENT` (2), `CONVERT_TIMEOUT_MS` (60000), `SOFFICE_PATH`.
+`PORT` (3000), `API_KEY`, `MAX_FILE_MB` (25), `MAX_CONCURRENT` (2), `CONVERT_TIMEOUT_MS` (60000), `SOFFICE_PATH`, `CLOUDCONVERT_API_KEY`, `CLOUDCONVERT_SANDBOX`, `CLOUDCONVERT_TIMEOUT_MS`.
 
 ## Infrastructure
 - Not deployed yet. Git is local only (3 commits, no remote).

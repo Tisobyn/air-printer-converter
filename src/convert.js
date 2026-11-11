@@ -3,6 +3,7 @@ import { mkdtemp, mkdir, readFile, rm, copyFile, writeFile } from "node:fs/promi
 import { tmpdir } from "node:os";
 import path from "node:path";
 import { contentMatchesExtension } from "./validate.js";
+import { cloudConvertEnabled, convertWithCloudConvert } from "./cloudconvert.js";
 
 export const SUPPORTED_EXTENSIONS = new Set([
   ".doc", ".docx", ".dot", ".dotx", ".rtf", ".odt", ".txt", ".html", ".htm",
@@ -19,7 +20,10 @@ const PROFILE_SETTINGS = `<?xml version="1.0" encoding="UTF-8"?>
 <item oor:path="/org.openoffice.Office.Calc/Content/Update"><prop oor:name="Link" oor:op="fuse"><value>2</value></prop></item>
 </oor:items>`;
 
-/** Convert a file on disk to PDF; resolves with the PDF bytes. */
+/**
+ * Convert a file on disk to PDF. Tries CloudConvert first (if configured),
+ * falls back to local LibreOffice. Resolves with { pdf, engine }.
+ */
 export async function convertToPdf(inputPath, originalName) {
   const ext = path.extname(originalName).toLowerCase();
   if (!SUPPORTED_EXTENSIONS.has(ext)) {
@@ -29,6 +33,24 @@ export async function convertToPdf(inputPath, originalName) {
     throw Object.assign(new Error("File content does not match its extension"), { status: 415 });
   }
 
+  if (cloudConvertEnabled()) {
+    try {
+      return { pdf: await convertWithCloudConvert(inputPath, ext), engine: "cloudconvert" };
+    } catch (err) {
+      console.warn(`CloudConvert failed, falling back to LibreOffice: ${err.message}`);
+    }
+  }
+  return { pdf: await convertWithLibreOffice(inputPath, ext), engine: "libreoffice" };
+}
+
+let loActive = 0;
+
+async function convertWithLibreOffice(inputPath, ext) {
+  const maxConcurrent = Number(process.env.MAX_CONCURRENT || 2);
+  if (loActive >= maxConcurrent) {
+    throw Object.assign(new Error("Server busy, retry shortly"), { status: 503 });
+  }
+  loActive++;
   const workDir = await mkdtemp(path.join(tmpdir(), "convert-"));
   try {
     const src = path.join(workDir, `input${ext}`);
@@ -48,6 +70,7 @@ export async function convertToPdf(inputPath, originalName) {
     }
     throw err;
   } finally {
+    loActive--;
     await rm(workDir, { recursive: true, force: true });
   }
 }

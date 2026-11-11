@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="210mm" height="297mm" viewBox="0 0 794 1123" font-family="Helvetica, Arial, sans-serif">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="context-stroke" /></marker>
+<marker id="a1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#444"/></marker>
+<marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#b3261e"/></marker>
+<marker id="a3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2e8b45"/></marker></defs>
+<rect width="794" height="1123" fill="#fff"/>
+<text x="397" y="50" text-anchor="middle" font-size="24" font-weight="bold" fill="#1a1a1a">Where user data goes</text>
+<text x="397" y="74" text-anchor="middle" font-size="14" font-weight="normal" fill="#555">And how long it stays</text>
+<rect x="40" y="110" width="160" height="60" rx="10" fill="#eef2f7" stroke="#5b6b82" stroke-width="1.5"/>
+<text x="120.0" y="131.0" text-anchor="middle" font-size="13" font-weight="bold" fill="#1a1a1a">User's phone</text>
+<text x="120.0" y="148.0" text-anchor="middle" font-size="11" font-weight="normal" fill="#444">picks a document</text>
+<line x1="200" y1="140" x2="284" y2="140" stroke="#444" stroke-width="1.5" marker-end="url(#a1)"/>
+<text x="242.0" y="132" text-anchor="middle" font-size="10.5" font-weight="normal" fill="#333">HTTPS</text>
+<rect x="286" y="110" width="170" height="60" rx="10" fill="#fff7e6" stroke="#c98a1b" stroke-width="1.5"/>
+<text x="371.0" y="131.0" text-anchor="middle" font-size="13" font-weight="bold" fill="#1a1a1a">Our server</text>
+<text x="371.0" y="148.0" text-anchor="middle" font-size="11" font-weight="normal" fill="#444">temp file only</text>
+<line x1="456" y1="128" x2="540" y2="128" stroke="#444" stroke-width="1.5" marker-end="url(#a1)"/>
+<text x="498.0" y="120" text-anchor="middle" font-size="10.5" font-weight="normal" fill="#333">HTTPS</text>
+<rect x="542" y="110" width="190" height="60" rx="10" fill="#e8f1ff" stroke="#2f6fdb" stroke-width="1.5"/>
+<text x="637.0" y="131.0" text-anchor="middle" font-size="13" font-weight="bold" fill="#1a1a1a">CloudConvert</text>
+<text x="637.0" y="148.0" text-anchor="middle" font-size="11" font-weight="normal" fill="#444">third party</text>
+<line x1="540" y1="154" x2="456" y2="154" stroke="#444" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#a1)"/>
+<text x="498.0" y="170" text-anchor="middle" font-size="10.5" font-weight="normal" fill="#333">PDF</text>
+<line x1="286" y1="162" x2="200" y2="162" stroke="#444" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#a1)"/>
+<text x="243" y="180" text-anchor="middle" font-size="10.5" font-weight="normal" fill="#444">PDF</text>
+<rect x="286" y="214" width="170" height="46" rx="10" fill="#e9f7ec" stroke="#2e8b45" stroke-width="1.5" stroke-dasharray="6 4"/>
+<text x="371.0" y="228.0" text-anchor="middle" font-size="13" font-weight="bold" fill="#1a1a1a">LibreOffice</text>
+<text x="371.0" y="245.0" text-anchor="middle" font-size="11" font-weight="normal" fill="#444">only if CloudConvert fails</text>
+<line x1="371" y1="170" x2="371" y2="212" stroke="#444" stroke-width="1.5" marker-end="url(#a1)"/>
+<rect x="542" y="214" width="190" height="46" rx="10" fill="#f3eefb" stroke="#7a4fc0" stroke-width="1.5"/>
+<text x="637.0" y="228.0" text-anchor="middle" font-size="13" font-weight="bold" fill="#1a1a1a">Hosting provider</text>
+<text x="637.0" y="245.0" text-anchor="middle" font-size="11" font-weight="normal" fill="#444">request logs</text>
+<text x="40" y="320" text-anchor="start" font-size="15" font-weight="bold" fill="#1a1a1a">What is stored where</text>
+<line x1="40" y1="328" x2="734" y2="328" stroke="#ccc"/>
+<text x="40" y="360" text-anchor="start" font-size="12" font-weight="bold" fill="#1a1a1a">Place</text>
+<text x="250" y="360" text-anchor="start" font-size="12" font-weight="bold" fill="#1a1a1a">What</text>
+<text x="470" y="360" text-anchor="start" font-size="12" font-weight="bold" fill="#1a1a1a">How long</text>
+<text x="40" y="386" text-anchor="start" font-size="12" font-weight="normal" fill="#444">Our server temp folder</text>
+<text x="250" y="386" text-anchor="start" font-size="12" font-weight="normal" fill="#444">the document and the PDF</text>
+<text x="470" y="386" text-anchor="start" font-size="12" font-weight="normal" fill="#444">Seconds. Deleted right after, also on errors.</text>
+<text x="40" y="412" text-anchor="start" font-size="12" font-weight="normal" fill="#444">CloudConvert</text>
+<text x="250" y="412" text-anchor="start" font-size="12" font-weight="normal" fill="#444">the document and the PDF</text>
+<text x="470" y="412" text-anchor="start" font-size="12" font-weight="normal" fill="#444">We delete the job right after. If that call fails,</text>
+<text x="40" y="438" text-anchor="start" font-size="12" font-weight="normal" fill="#444"></text>
+<text x="250" y="438" text-anchor="start" font-size="12" font-weight="normal" fill="#444"></text>
+<text x="470" y="438" text-anchor="start" font-size="12" font-weight="normal" fill="#444">their own retention applies. Read their terms.</text>
+<text x="40" y="464" text-anchor="start" font-size="12" font-weight="normal" fill="#444">Hosting provider logs</text>
+<text x="250" y="464" text-anchor="start" font-size="12" font-weight="normal" fill="#444">IP, time, size, status code</text>
+<text x="470" y="464" text-anchor="start" font-size="12" font-weight="normal" fill="#444">Check your provider. Not the file content.</text>
+<text x="40" y="490" text-anchor="start" font-size="12" font-weight="normal" fill="#444">Our database</text>
+<text x="250" y="490" text-anchor="start" font-size="12" font-weight="normal" fill="#444">nothing</text>
+<text x="470" y="490" text-anchor="start" font-size="12" font-weight="normal" fill="#444">We have no database and no user accounts.</text>
+<text x="40" y="560" text-anchor="start" font-size="15" font-weight="bold" fill="#1a1a1a">What we promise</text>
+<line x1="40" y1="568" x2="734" y2="568" stroke="#ccc"/>
+<text x="40" y="592" text-anchor="start" font-size="12" font-weight="normal" fill="#444">-  We do not read the documents.</text>
+<text x="40" y="614" text-anchor="start" font-size="12" font-weight="normal" fill="#444">-  We do not sell them or use them for ads.</text>
+<text x="40" y="636" text-anchor="start" font-size="12" font-weight="normal" fill="#444">-  We do not use them to train AI (our server; see CloudConvert terms for theirs).</text>
+<text x="40" y="658" text-anchor="start" font-size="12" font-weight="normal" fill="#444">-  We keep no copy on our server after the conversion.</text>
+<text x="40" y="720" text-anchor="start" font-size="15" font-weight="bold" fill="#1a1a1a">Must be in the Privacy Policy</text>
+<line x1="40" y1="728" x2="734" y2="728" stroke="#ccc"/>
+<text x="40" y="752" text-anchor="start" font-size="12" font-weight="normal" fill="#444">-  Name CloudConvert as a third party that receives the document.</text>
+<text x="40" y="774" text-anchor="start" font-size="12" font-weight="normal" fill="#444">-  Name the hosting provider and say how long logs are kept.</text>
+<text x="40" y="796" text-anchor="start" font-size="12" font-weight="normal" fill="#444">-  Tell the user before the first upload: your file is sent to our server and deleted right after.</text>
+<text x="40" y="818" text-anchor="start" font-size="12" font-weight="normal" fill="#444">-  App Store privacy form: Other User Content, used for app functionality, not tracking.</text>
+<text x="40" y="840" text-anchor="start" font-size="12" font-weight="normal" fill="#444">-  Details: docs/LEGAL_NOTES.md. Have a lawyer check the final text.</text>
+</svg>

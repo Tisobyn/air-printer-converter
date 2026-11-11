@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="210mm" height="297mm" viewBox="0 0 794 1123" font-family="Helvetica, Arial, sans-serif">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="context-stroke" /></marker>
+<marker id="a1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#444"/></marker>
+<marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#b3261e"/></marker>
+<marker id="a3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2e8b45"/></marker></defs>
+<rect width="794" height="1123" fill="#fff"/>
+<text x="397" y="50" text-anchor="middle" font-size="24" font-weight="bold" fill="#1a1a1a">Scaling</text>
+<text x="397" y="74" text-anchor="middle" font-size="14" font-weight="normal" fill="#555">What changes from 100 to 1000 users</text>
+<rect x="40" y="100" width="340" height="34" rx="10" fill="#e8f1ff" stroke="#2f6fdb" stroke-width="1.5"/>
+<text x="210.0" y="122.0" text-anchor="middle" font-size="14" font-weight="bold" fill="#1a1a1a">Today: about 100 users</text>
+<rect x="414" y="100" width="340" height="34" rx="10" fill="#fff7e6" stroke="#c98a1b" stroke-width="1.5"/>
+<text x="584.0" y="122.0" text-anchor="middle" font-size="14" font-weight="bold" fill="#1a1a1a">Later: about 1000 users</text>
+<rect x="110" y="170" width="200" height="40" rx="10" fill="#eef2f7" stroke="#5b6b82" stroke-width="1.5"/>
+<text x="210.0" y="181.0" text-anchor="middle" font-size="13" font-weight="bold" fill="#1a1a1a">Apps</text>
+<text x="210.0" y="198.0" text-anchor="middle" font-size="11" font-weight="normal" fill="#444">iOS and Android</text>
+<line x1="210" y1="210" x2="210" y2="240" stroke="#444" stroke-width="1.5" marker-end="url(#a1)"/>
+<rect x="90" y="242" width="240" height="56" rx="10" fill="#e9f7ec" stroke="#2e8b45" stroke-width="1.5"/>
+<text x="210.0" y="254.0" text-anchor="middle" font-size="13" font-weight="bold" fill="#1a1a1a">1 server container</text>
+<text x="210.0" y="271.0" text-anchor="middle" font-size="11" font-weight="normal" fill="#444">2 GB RAM, 2 CPU</text>
+<text x="210.0" y="285.0" text-anchor="middle" font-size="11" font-weight="normal" fill="#444">built and working</text>
+<line x1="160" y1="298" x2="120" y2="336" stroke="#444" stroke-width="1.5" marker-end="url(#a1)"/>
+<line x1="260" y1="298" x2="300" y2="336" stroke="#444" stroke-width="1.5" marker-end="url(#a1)"/>
+<rect x="50" y="338" width="150" height="50" rx="10" fill="#e8f1ff" stroke="#2f6fdb" stroke-width="1.5"/>
+<text x="125.0" y="354.0" text-anchor="middle" font-size="13" font-weight="bold" fill="#1a1a1a">CloudConvert</text>
+<text x="125.0" y="371.0" text-anchor="middle" font-size="11" font-weight="normal" fill="#444">first</text>
+<rect x="220" y="338" width="150" height="50" rx="10" fill="#e9f7ec" stroke="#2e8b45" stroke-width="1.5"/>
+<text x="295.0" y="354.0" text-anchor="middle" font-size="13" font-weight="bold" fill="#1a1a1a">LibreOffice</text>
+<text x="295.0" y="371.0" text-anchor="middle" font-size="11" font-weight="normal" fill="#444">backup, 2 at a time</text>
+<text x="210" y="420" text-anchor="middle" font-size="11" font-weight="normal" fill="#444">Extra jobs beyond 2 at a time get</text>
+<text x="210" y="435" text-anchor="middle" font-size="11" font-weight="normal" fill="#444">503 busy, only when CloudConvert fails.</text>
+<rect x="484" y="170" width="200" height="40" rx="10" fill="#eef2f7" stroke="#5b6b82" stroke-width="1.5"/>
+<text x="584.0" y="181.0" text-anchor="middle" font-size="13" font-weight="bold" fill="#1a1a1a">Apps</text>
+<text x="584.0" y="198.0" text-anchor="middle" font-size="11" font-weight="normal" fill="#444">iOS and Android</text>
+<line x1="584" y1="210" x2="584" y2="226" stroke="#444" stroke-width="1.5" marker-end="url(#a1)"/>
+<rect x="464" y="228" width="240" height="36" rx="10" fill="#fff7e6" stroke="#c98a1b" stroke-width="1.5" stroke-dasharray="6 4"/>
+<text x="584.0" y="251.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#1a1a1a">Rate limit per user / IP</text>
+<line x1="584" y1="264" x2="584" y2="282" stroke="#444" stroke-width="1.5" marker-end="url(#a1)"/>
+<rect x="464" y="284" width="240" height="36" rx="10" fill="#fff7e6" stroke="#c98a1b" stroke-width="1.5" stroke-dasharray="6 4"/>
+<text x="584.0" y="307.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#1a1a1a">Load balancer</text>
+<line x1="560" y1="320" x2="500" y2="346" stroke="#444" stroke-width="1.5" marker-end="url(#a1)"/>
+<line x1="584" y1="320" x2="584" y2="346" stroke="#444" stroke-width="1.5" marker-end="url(#a1)"/>
+<line x1="608" y1="320" x2="668" y2="346" stroke="#444" stroke-width="1.5" marker-end="url(#a1)"/>
+<rect x="424" y="348" width="100" height="44" rx="10" fill="#e9f7ec" stroke="#2e8b45" stroke-width="1.5" stroke-dasharray="6 4"/>
+<text x="474.0" y="361.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#1a1a1a">Server 1</text>
+<text x="474.0" y="378.0" text-anchor="middle" font-size="11" font-weight="normal" fill="#444">same image</text>
+<rect x="534" y="348" width="100" height="44" rx="10" fill="#e9f7ec" stroke="#2e8b45" stroke-width="1.5" stroke-dasharray="6 4"/>
+<text x="584.0" y="361.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#1a1a1a">Server 2</text>
+<text x="584.0" y="378.0" text-anchor="middle" font-size="11" font-weight="normal" fill="#444">same image</text>
+<rect x="644" y="348" width="100" height="44" rx="10" fill="#e9f7ec" stroke="#2e8b45" stroke-width="1.5" stroke-dasharray="6 4"/>
+<text x="694.0" y="361.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#1a1a1a">Server 3</text>
+<text x="694.0" y="378.0" text-anchor="middle" font-size="11" font-weight="normal" fill="#444">same image</text>
+<line x1="584" y1="392" x2="584" y2="416" stroke="#444" stroke-width="1.5" marker-end="url(#a1)"/>
+<rect x="464" y="418" width="240" height="40" rx="10" fill="#e8f1ff" stroke="#2f6fdb" stroke-width="1.5"/>
+<text x="584.0" y="443.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#1a1a1a">CloudConvert, then LibreOffice</text>
+<rect x="414" y="476" width="340" height="44" rx="10" fill="#f3eefb" stroke="#7a4fc0" stroke-width="1.5" stroke-dasharray="6 4"/>
+<text x="584.0" y="489.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#1a1a1a">Optional: job queue (Redis / SQS)</text>
+<text x="584.0" y="506.0" text-anchor="middle" font-size="11" font-weight="normal" fill="#444">upload, get a job id, poll for the result</text>
+<text x="584" y="540" text-anchor="middle" font-size="11" font-weight="normal" fill="#555">Dashed = not built yet</text>
+<text x="40" y="600" text-anchor="start" font-size="15" font-weight="bold" fill="#1a1a1a">What to expect</text>
+<line x1="40" y1="608" x2="734" y2="608" stroke="#ccc"/>
+<text x="40" y="640" text-anchor="start" font-size="12" font-weight="bold" fill="#1a1a1a">Users</text>
+<text x="130" y="640" text-anchor="start" font-size="12" font-weight="bold" fill="#1a1a1a">Peak at once</text>
+<text x="250" y="640" text-anchor="start" font-size="12" font-weight="bold" fill="#1a1a1a">What you need</text>
+<text x="640" y="640" text-anchor="start" font-size="12" font-weight="bold" fill="#1a1a1a">Status</text>
+<text x="40" y="668" text-anchor="start" font-size="12" font-weight="normal" fill="#444">~100</text>
+<text x="130" y="668" text-anchor="start" font-size="12" font-weight="normal" fill="#444">1 to 3</text>
+<text x="250" y="668" text-anchor="start" font-size="12" font-weight="normal" fill="#444">1 small server (2 GB RAM, 2 CPU)</text>
+<text x="640" y="668" text-anchor="start" font-size="12" font-weight="normal" fill="#444">Ready</text>
+<text x="40" y="696" text-anchor="start" font-size="12" font-weight="normal" fill="#444">~1000</text>
+<text x="130" y="696" text-anchor="start" font-size="12" font-weight="normal" fill="#444">5 to 20</text>
+<text x="250" y="696" text-anchor="start" font-size="12" font-weight="normal" fill="#444">Several servers, load balancer, rate limit, queue</text>
+<text x="640" y="696" text-anchor="start" font-size="12" font-weight="normal" fill="#444">Not built</text>
+<text x="40" y="724" text-anchor="start" font-size="12" font-weight="normal" fill="#444">any</text>
+<text x="130" y="724" text-anchor="start" font-size="12" font-weight="normal" fill="#444">-</text>
+<text x="250" y="724" text-anchor="start" font-size="12" font-weight="normal" fill="#444">Enough CloudConvert credits (costs money per file)</text>
+<text x="640" y="724" text-anchor="start" font-size="12" font-weight="normal" fill="#444">Your account</text>
+<text x="40" y="790" text-anchor="start" font-size="15" font-weight="bold" fill="#1a1a1a">Why one server is not enough at 1000 users</text>
+<line x1="40" y1="798" x2="734" y2="798" stroke="#ccc"/>
+<text x="40" y="822" text-anchor="start" font-size="12" font-weight="normal" fill="#444">Each LibreOffice job takes 5 to 10 seconds and 150 to 500 MB of memory.</text>
+<text x="40" y="844" text-anchor="start" font-size="12" font-weight="normal" fill="#444">The server runs 2 at a time (MAX_CONCURRENT). The rest get 503.</text>
+<text x="40" y="866" text-anchor="start" font-size="12" font-weight="normal" fill="#444">With CloudConvert working, most jobs never touch our CPU. The risk is when it fails or credits run out:</text>
+<text x="40" y="888" text-anchor="start" font-size="12" font-weight="normal" fill="#444">then everything lands on LibreOffice at once.</text>
+<text x="40" y="910" text-anchor="start" font-size="12" font-weight="normal" fill="#444">Fix in order: more servers, then a queue, then a rate limit per user.</text>
+</svg>

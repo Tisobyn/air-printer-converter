@@ -139,6 +139,7 @@ Dockerfile
 
 | File | For |
 |---|---|
+| [ARCHITECTURE.md](docs/ARCHITECTURE.md) | Diagrams: how a request flows. PDF: [AirPrinter-Converter-Diagrams.pdf](docs/AirPrinter-Converter-Diagrams.pdf) |
 | [SWIFT_INTEGRATION.md](docs/SWIFT_INTEGRATION.md) | iOS developers: how to connect |
 | [KNOWN_PROBLEMS.md](docs/KNOWN_PROBLEMS.md) | Format, font, scaling and security limits |
 | [TECH_STACK.md](docs/TECH_STACK.md) | What we use and which versions |

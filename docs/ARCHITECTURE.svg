@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="210mm" height="297mm" viewBox="0 0 794 1123" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#444"/></marker>
+  </defs>
+  <rect width="794" height="1123" fill="#ffffff"/>
+
+  <text x="397" y="50" text-anchor="middle" font-size="26" font-weight="bold" fill="#1a1a1a">air-printer-converter</text>
+  <text x="397" y="74" text-anchor="middle" font-size="14" fill="#555">How a document becomes a PDF</text>
+
+  <!-- 1 App -->
+  <rect x="130" y="100" width="260" height="46" rx="10" fill="#eef2f7" stroke="#5b6b82" stroke-width="1.5"/>
+  <text x="260" y="120" text-anchor="middle" font-size="13" font-weight="bold" fill="#1a1a1a">iOS / Android app</text>
+  <text x="260" y="136" text-anchor="middle" font-size="11" fill="#444">sends a document</text>
+  <line x1="260" y1="146" x2="260" y2="180" stroke="#444" stroke-width="1.5" marker-end="url(#ar)"/>
+
+  <!-- 2 Server checks -->
+  <rect x="130" y="182" width="260" height="60" rx="10" fill="#fff7e6" stroke="#c98a1b" stroke-width="1.5"/>
+  <text x="260" y="203" text-anchor="middle" font-size="13" font-weight="bold" fill="#1a1a1a">Our server: POST /convert</text>
+  <text x="260" y="220" text-anchor="middle" font-size="11" fill="#444">checks API key, file size,</text>
+  <text x="260" y="234" text-anchor="middle" font-size="11" fill="#444">file type and real content</text>
+  <line x1="390" y1="212" x2="518" y2="212" stroke="#b3261e" stroke-width="1.5" marker-end="url(#ar)"/>
+  <text x="454" y="205" text-anchor="middle" font-size="10" fill="#b3261e">not OK</text>
+  <rect x="520" y="190" width="200" height="44" rx="10" fill="#fdecea" stroke="#b3261e" stroke-width="1.5"/>
+  <text x="620" y="209" text-anchor="middle" font-size="12" font-weight="bold" fill="#b3261e">Error 401 / 413 / 415</text>
+  <text x="620" y="225" text-anchor="middle" font-size="10" fill="#555">key, size, type problem</text>
+  <line x1="260" y1="242" x2="260" y2="296" stroke="#444" stroke-width="1.5" marker-end="url(#ar)"/>
+  <text x="270" y="272" font-size="10" fill="#555">OK</text>
+
+  <!-- 3 CloudConvert -->
+  <rect x="130" y="298" width="260" height="64" rx="10" fill="#e8f1ff" stroke="#2f6fdb" stroke-width="1.5"/>
+  <text x="260" y="320" text-anchor="middle" font-size="13" font-weight="bold" fill="#1a1a1a">Engine 1: CloudConvert</text>
+  <text x="260" y="337" text-anchor="middle" font-size="11" fill="#444">online service, tried first</text>
+  <text x="260" y="351" text-anchor="middle" font-size="11" fill="#444">gives up after 45 seconds</text>
+  <line x1="260" y1="362" x2="260" y2="426" stroke="#b3261e" stroke-width="1.5" marker-end="url(#ar)"/>
+  <text x="272" y="388" font-size="10" fill="#b3261e">fails, is slow,</text>
+  <text x="272" y="401" font-size="10" fill="#b3261e">or no API key set</text>
+
+  <!-- 4 LibreOffice -->
+  <rect x="130" y="428" width="260" height="64" rx="10" fill="#e9f7ec" stroke="#2e8b45" stroke-width="1.5"/>
+  <text x="260" y="450" text-anchor="middle" font-size="13" font-weight="bold" fill="#1a1a1a">Engine 2: our LibreOffice</text>
+  <text x="260" y="467" text-anchor="middle" font-size="11" fill="#444">runs on our server, backup</text>
+  <text x="260" y="481" text-anchor="middle" font-size="11" fill="#444">gives up after 60 seconds</text>
+  <line x1="390" y1="460" x2="518" y2="460" stroke="#b3261e" stroke-width="1.5" marker-end="url(#ar)"/>
+  <text x="454" y="453" text-anchor="middle" font-size="10" fill="#b3261e">fails</text>
+  <rect x="520" y="438" width="200" height="44" rx="10" fill="#fdecea" stroke="#b3261e" stroke-width="1.5"/>
+  <text x="620" y="457" text-anchor="middle" font-size="12" font-weight="bold" fill="#b3261e">Error 422 / 503 / 504</text>
+  <text x="620" y="473" text-anchor="middle" font-size="10" fill="#555">broken, busy or too slow</text>
+
+  <!-- CloudConvert success path (left side) -->
+  <polyline points="130,330 80,330 80,568 128,568" fill="none" stroke="#2e8b45" stroke-width="1.5" marker-end="url(#ar)"/>
+  <text x="70" y="450" text-anchor="end" font-size="10" fill="#2e8b45">success</text>
+
+  <!-- LibreOffice success -->
+  <line x1="260" y1="492" x2="260" y2="544" stroke="#2e8b45" stroke-width="1.5" marker-end="url(#ar)"/>
+  <text x="272" y="522" font-size="10" fill="#2e8b45">success</text>
+
+  <!-- 5 PDF -->
+  <rect x="130" y="546" width="260" height="44" rx="10" fill="#2e8b45" stroke="#2e8b45"/>
+  <text x="260" y="573" text-anchor="middle" font-size="14" font-weight="bold" fill="#ffffff">PDF is ready</text>
+  <line x1="260" y1="590" x2="260" y2="622" stroke="#444" stroke-width="1.5" marker-end="url(#ar)"/>
+
+  <!-- 6 Cleanup -->
+  <rect x="130" y="624" width="260" height="46" rx="10" fill="#f3eefb" stroke="#7a4fc0" stroke-width="1.5"/>
+  <text x="260" y="644" text-anchor="middle" font-size="13" font-weight="bold" fill="#1a1a1a">Delete the files</text>
+  <text x="260" y="660" text-anchor="middle" font-size="11" fill="#444">on our server and at CloudConvert</text>
+  <line x1="260" y1="670" x2="260" y2="702" stroke="#444" stroke-width="1.5" marker-end="url(#ar)"/>
+
+  <!-- 7 Response -->
+  <rect x="130" y="704" width="260" height="46" rx="10" fill="#eef2f7" stroke="#5b6b82" stroke-width="1.5"/>
+  <text x="260" y="724" text-anchor="middle" font-size="13" font-weight="bold" fill="#1a1a1a">200 OK, with the PDF</text>
+  <text x="260" y="740" text-anchor="middle" font-size="11" fill="#444">header X-Converted-By says which engine</text>
+  <line x1="260" y1="750" x2="260" y2="782" stroke="#444" stroke-width="1.5" marker-end="url(#ar)"/>
+
+  <!-- 8 App shows -->
+  <rect x="130" y="784" width="260" height="40" rx="10" fill="#eef2f7" stroke="#5b6b82" stroke-width="1.5"/>
+  <text x="260" y="809" text-anchor="middle" font-size="13" font-weight="bold" fill="#1a1a1a">App shows the PDF</text>
+
+  <!-- Side note -->
+  <rect x="470" y="560" width="250" height="110" rx="10" fill="#f7f7f7" stroke="#bbb" stroke-width="1"/>
+  <text x="485" y="582" font-size="12" font-weight="bold" fill="#1a1a1a">Why two engines?</text>
+  <text x="485" y="602" font-size="11" fill="#444">CloudConvert: good quality, and</text>
+  <text x="485" y="617" font-size="11" fill="#444">our server stays free.</text>
+  <text x="485" y="637" font-size="11" fill="#444">LibreOffice: safety net if</text>
+  <text x="485" y="652" font-size="11" fill="#444">CloudConvert is down or out of credits.</text>
+
+  <!-- Who does what -->
+  <text x="60" y="866" font-size="15" font-weight="bold" fill="#1a1a1a">Who does what</text>
+  <line x1="60" y1="874" x2="734" y2="874" stroke="#ccc"/>
+  <text x="60" y="900" font-size="12" font-weight="bold" fill="#1a1a1a">App (iOS / Android)</text>
+  <text x="250" y="900" font-size="12" fill="#444">Picks the file, uploads it, shows the PDF or the error.</text>
+  <text x="60" y="928" font-size="12" font-weight="bold" fill="#1a1a1a">Our server</text>
+  <text x="250" y="928" font-size="12" fill="#444">Node + Express. Checks the file, picks the engine, returns the PDF.</text>
+  <text x="60" y="956" font-size="12" font-weight="bold" fill="#2f6fdb">CloudConvert</text>
+  <text x="250" y="956" font-size="12" fill="#444">First engine. Online. Costs money per file.</text>
+  <text x="60" y="984" font-size="12" font-weight="bold" fill="#2e8b45">LibreOffice</text>
+  <text x="250" y="984" font-size="12" fill="#444">Backup engine. Free, but uses our server CPU and memory.</text>
+
+  <text x="60" y="1030" font-size="15" font-weight="bold" fill="#1a1a1a">Where the file travels</text>
+  <line x1="60" y1="1038" x2="734" y2="1038" stroke="#ccc"/>
+  <text x="60" y="1062" font-size="12" fill="#444">Phone  to  our server  to  CloudConvert  and back  to  our server  to  phone. All over HTTPS.</text>
+  <text x="60" y="1082" font-size="12" fill="#444">If CloudConvert fails, the file stays on our server and LibreOffice converts it.</text>
+</svg>

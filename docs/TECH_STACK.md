@@ -26,8 +26,12 @@ Only 2 runtime packages: `express`, `multer`. No dev dependencies. No database. 
 - `src/cloudconvert.js` — CloudConvert client
 - `src/validate.js` — checks file content matches its extension
 - `test/` — 13 tests (`npm test`)
+- `.env.example` — all settings; run with `npm run start:env`
 - `scripts/to-desktop.sh` — converts a file and saves the PDF to Desktop
 - `Dockerfile` — image with LibreOffice and fonts
+
+## Docs tooling
+Diagram pages in `docs/diagrams/` are SVG files made by `generate.py` (plain Python 3, no packages) and turned into PDF with LibreOffice: `soffice --headless --convert-to pdf file.svg`. The Mermaid diagrams in `ARCHITECTURE.md` render on GitHub.
 
 ## Config (environment variables)
 `PORT` (3000), `API_KEY`, `MAX_FILE_MB` (25), `MAX_CONCURRENT` (2), `CONVERT_TIMEOUT_MS` (60000), `SOFFICE_PATH`, `CLOUDCONVERT_API_KEY`, `CLOUDCONVERT_SANDBOX`, `CLOUDCONVERT_TIMEOUT_MS`.

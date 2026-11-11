@@ -8,6 +8,7 @@
 <p align="center">
   <img alt="Node" src="https://img.shields.io/badge/Node-%E2%89%A520-339933?logo=node.js&logoColor=white">
   <img alt="Express" src="https://img.shields.io/badge/Express-4-000000?logo=express&logoColor=white">
+  <img alt="CloudConvert" src="https://img.shields.io/badge/CloudConvert-API%20v2-2f6fdb">
   <img alt="LibreOffice" src="https://img.shields.io/badge/LibreOffice-headless-18A303?logo=libreoffice&logoColor=white">
   <img alt="Docker" src="https://img.shields.io/badge/Docker-ready-2496ED?logo=docker&logoColor=white">
 </p>
@@ -50,6 +51,8 @@ export SOFFICE_PATH=/Applications/LibreOffice.app/Contents/MacOS/soffice
 npm install
 npm start
 ```
+To use CloudConvert, copy `.env.example` to `.env`, add your key, then run `npm run start:env`.
+Without a key the server uses only LibreOffice.
 
 **3. Convert a file**
 ```bash
@@ -69,7 +72,7 @@ Documents are untrusted input, so run it locked down:
 docker build -t air-printer-converter .
 docker run -p 3000:3000 --read-only --tmpfs /tmp --cap-drop ALL \
   --security-opt no-new-privileges --memory 1g --cpus 2 --pids-limit 256 \
-  -e API_KEY=change-me air-printer-converter
+  -e API_KEY=change-me -e CLOUDCONVERT_API_KEY=your-key air-printer-converter
 ```
 
 > 💡 If you can, also block the container's outbound network at the host or firewall level.
@@ -118,7 +121,7 @@ Errors are JSON: `{"error": "message"}`
 ```bash
 npm test
 ```
-13 tests (CloudConvert is tested against a fake local server, no real key needed). The real-conversion tests is skipped if `soffice` is not installed.
+13 tests (CloudConvert is tested against a fake local server, no real key needed). The real-conversion tests are skipped if `soffice` is not installed.
 
 ## 🗂 Project structure
 
@@ -132,15 +135,30 @@ src/
 test/           node:test suite
 scripts/        to-desktop.sh helper
 docs/           guides (below)
+docs/diagrams/  diagram sources (SVG) and generate.py
+.env.example    all settings, copy to .env
 Dockerfile
 ```
+
+## 🧭 Status
+
+| Done | Still to do |
+|---|---|
+| ✅ Convert API, validation, tests | ⬜ Try CloudConvert with a real key (sandbox first) |
+| ✅ CloudConvert first, LibreOffice fallback | ⬜ Test .xlsx, .pptx, .odt, .csv, .html and iWork files |
+| ✅ Docs and diagrams | ⬜ Add more fonts to the Dockerfile (CJK, Arabic, emoji) |
+| ✅ Docker image written | ⬜ Build and test the Docker image (Docker not installed here) |
+| | ⬜ Deploy, HTTPS, set `API_KEY` |
+| | ⬜ Connect the iOS and Android apps |
+| | ⬜ Final Privacy Policy and Terms |
+| | ⬜ Push to GitHub (repo is local only) |
 
 ## 📖 Docs
 
 | File | For |
 |---|---|
 | [ARCHITECTURE.md](docs/ARCHITECTURE.md) | Diagrams: how a request flows. PDF: [AirPrinter-Converter-Diagrams.pdf](docs/AirPrinter-Converter-Diagrams.pdf) |
-| [SWIFT_INTEGRATION.md](docs/SWIFT_INTEGRATION.md) | iOS developers: how to connect |
+| [SWIFT_INTEGRATION.md](docs/SWIFT_INTEGRATION.md) | iOS and Android developers: how to connect |
 | [KNOWN_PROBLEMS.md](docs/KNOWN_PROBLEMS.md) | Format, font, scaling and security limits |
 | [TECH_STACK.md](docs/TECH_STACK.md) | What we use and which versions |
 | [LEGAL_NOTES.md](docs/LEGAL_NOTES.md) | What to put in Privacy Policy and Terms |

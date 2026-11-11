@@ -7,9 +7,18 @@ Local (needs LibreOffice: `brew install --cask libreoffice`):
 ```bash
 npm install && npm start
 ```
-Docker:
+Docker (hardened — documents are untrusted input):
 ```bash
-docker build -t air-printer-converter . && docker run -p 3000:3000 air-printer-converter
+docker build -t air-printer-converter .
+docker run -p 3000:3000 --read-only --tmpfs /tmp --cap-drop ALL \
+  --security-opt no-new-privileges --memory 1g --cpus 2 --pids-limit 256 \
+  -e API_KEY=change-me air-printer-converter
+```
+Where possible, also block the container's outbound network at the host/firewall level so documents can't make the server fetch remote content.
+
+## Test
+```bash
+npm test   # the real-conversion test is skipped if soffice is missing
 ```
 
 ## API

@@ -47,7 +47,12 @@ export async function convertWithCloudConvert(inputPath, ext) {
     await check(await fetch(form.url, { method: "POST", body, signal }), "upload");
 
     const done = (await (await check(await fetch(`${c.sync}/v2/jobs/${jobId}`, { headers: auth, signal }), "wait for job")).json()).data;
-    if (done.status !== "finished") throw new Error(`CloudConvert job ${done.status}`);
+    if (done.status !== "finished") {
+      const errors = done.tasks?.filter((t) => t.status === "error") || [];
+      const failed = errors.find((t) => t.code !== "INPUT_TASK_FAILED") || errors[0];
+      const why = failed ? ` (${failed.name}: ${failed.code || ""} ${failed.message || ""})`.replace(/\s+\)/, ")") : "";
+      throw new Error(`CloudConvert job ${done.status}${why}`);
+    }
     const fileUrl = done.tasks.find((t) => t.name === "export-file")?.result?.files?.[0]?.url;
     if (!fileUrl) throw new Error("CloudConvert returned no file");
 
